@@ -108,4 +108,6 @@ class CalculatorForm extends Component {
   }
 }
 
+export const CalculatorFormTest = CalculatorForm
+
 export default connect(null, actions)(CalculatorForm);

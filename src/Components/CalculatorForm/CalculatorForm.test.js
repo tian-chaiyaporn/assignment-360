@@ -1,7 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CalculatorForm from './CalculatorForm';
+import { CalculatorFormTest } from './CalculatorForm';
 
-it('renders without crashing', () => {
-  shallow(<CalculatorForm />);
-});
+
+describe('component renders correctly', () => {
+  it('renders without crashing', () => {
+    shallow(<CalculatorFormTest />);
+  });
+
+  // it('renders textinput and number correctly', () => {
+  //   const wrapper = shallow(<CalculatorFormTest />);
+  //   wrapper.find('people-input').simulate('change', {target: {value: 3}});
+  //   expect(wrapper.find('people-input').value)
+  // })
+})
