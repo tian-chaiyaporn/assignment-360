@@ -52,7 +52,7 @@ class CalculatorForm extends Component {
     const appliedCoupons = this.state.coupons.map(coupon => {
       return (
         <p key={shortid.generate()} className="coupon">
-          <span>{coupon}</span>
+          <span id={coupon}>{coupon}</span>
           <button onClick={this.deleteCoupon.bind(this, coupon)}>Delete</button>
         </p>
       )
@@ -95,11 +95,11 @@ class CalculatorForm extends Component {
                   minLength="1"
                   maxLength="100"
                 />
-                <button onClick={this.addCoupon}>Add</button>
+                <button id="coupon-add" onClick={this.addCoupon}>Add</button>
               </p>
             </section>
             <p>
-              <button type="submit" onClick={this.handleSubmit}>Submit</button>
+              <button id="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
             </p>
           </fieldset>
         </form>
