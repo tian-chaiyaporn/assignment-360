@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import * as actions from '../../actions/action'
 import shortid from 'shortid'
 import './CalculatorForm.css';
 
 class CalculatorForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       people: 1,
       couponInput: '',
@@ -13,6 +15,7 @@ class CalculatorForm extends Component {
     this.handlePeopleChange = this.handlePeopleChange.bind(this)
     this.handleCouponChange = this.handleCouponChange.bind(this)
     this.addCoupon = this.addCoupon.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handlePeopleChange(e) { this.setState({people: e.target.value}) }
@@ -33,10 +36,16 @@ class CalculatorForm extends Component {
   }
 
   deleteCoupon(coupon) {
-    this.setState((prevState) => {
-      // no need for id here, as coupon body cannot be identical.
+    // no need for id here, as coupon body cannot be identical.
+    this.setState(prevState => {
       return {coupons: prevState.coupons.filter(c => c !== coupon)}
     })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.submitCalculatorForm(this.state.people, this.state.coupons)
+    this.setState({people: 1, coupons: []})
   }
 
   render() {
@@ -90,7 +99,7 @@ class CalculatorForm extends Component {
               </p>
             </section>
             <p>
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={this.handleSubmit}>Submit</button>
             </p>
           </fieldset>
         </form>
@@ -99,4 +108,4 @@ class CalculatorForm extends Component {
   }
 }
 
-export default CalculatorForm;
+export default connect(null, actions)(CalculatorForm);
