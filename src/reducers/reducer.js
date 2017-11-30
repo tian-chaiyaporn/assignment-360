@@ -58,12 +58,24 @@ function filterDeals(deal, coupons, totalPeople, totalBill) {
 }
 
 // for mapping
-function formatResult(deal) {
-  
+function formatResult(deal, totalBill) {
+  return {
+    name: deal.deal,
+    finalBill: totalBill * (1 - discountPercent)
+  }
 }
 
 // for sorting
-function sortByPrice() {}
+function sortByPrice(dealA, dealB) {
+  switch (true) {
+    case dealA.finalBill > dealB.finalBill:
+      return 1;
+    case dealA.finalBill < dealB.finalBill:
+      return -1;
+    case dealA.finalBill === dealB.finalBill:
+      return 0;
+  }
+}
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
