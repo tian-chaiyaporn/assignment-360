@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import shortid from 'shortid'
+import ResultItem from './ResultItem'
 
 const Result = (props) => {
-  const items = props.results.map(result => {
+  const items = props.results.map((result, index) => {
     return (
-      <div key={shortid.generate()}>
-        <p>{result.name}</p>
-        <p>{`${result.finalBill} Baht`}</p>
-      </div>
+      <ResultItem
+        key={shortid.generate()}
+        index={index}
+        name={result.name}
+        amount={result.finalBill}
+      />
     )
   })
   return (
