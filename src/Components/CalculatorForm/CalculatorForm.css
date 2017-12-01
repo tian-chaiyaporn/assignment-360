@@ -1,0 +1,63 @@
+.CalculatorForm {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+}
+
+.calculator-fieldset {
+  display: flex;
+  width: inherit;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.calculator-people {
+  display: flex;
+}
+
+.calculator-coupon-add {
+  display: flex;
+}
+
+.calculator-item {
+  display: flex;
+  text-align: center;
+  font-size: 1.2em;
+  height: 45px;
+  width: 100%;
+  background-color: white;
+  border: none;
+}
+
+.people-label {
+  flex: 4;
+  padding: 12px;
+  background-color: #E1BEE7;
+}
+
+.people-input {
+  flex: 1;
+  text-align: center;
+}
+
+.coupon-label {
+  flex: 1;
+  display: inline-block;
+  padding: 12px;
+  background-color: #E1BEE7;
+}
+
+.coupon-input {
+  flex: 4;
+  text-align: center;
+}
+
+.coupon-add-btn {
+  flex: 1;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.8em;
+  color: white;
+  background-color: #1E88E5;
+}

@@ -61,18 +61,18 @@ class CalculatorForm extends Component {
     return (
       <div className="CalculatorForm">
         <form>
-          <h1>Calculator Form</h1>
-          <fieldset>
-            <legend>Bill Calculator</legend>
+          <h1 className="calculator-title">Calculator Form</h1>
+          <fieldset className="calculator-fieldset">
+            <legend className="calculator-legend">Bill Calculator</legend>
 
-            <p>
-              <label htmlFor="people">
-                <span>Number of People: </span>
-                <strong>*</strong>
+            <p className="calculator-people">
+              <label htmlFor="people" className="calculator-item people-label">
+                <span>NUMBER OF PEOPLE: </span>
               </label>
               <input
                 type="number"
                 name="people"
+                className="calculator-item people-input"
                 id="people-input"
                 onChange={this.handlePeopleChange}
                 value={this.state.people}
@@ -82,14 +82,15 @@ class CalculatorForm extends Component {
               />
             </p>
 
-            <section className="coupon-section">
+            <section className="calculator-coupon">
               {appliedCoupons}
-              <p className="coupon-form">
-                <label htmlFor="coupon">
-                  <span>Coupon: </span>
+              <p className="calculator-coupon-add">
+                <label htmlFor="coupon" className="calculator-item coupon-label">
+                  <span>COUPON: </span>
                 </label>
                 <input
                   type="text"
+                  className="calculator-item coupon-input"
                   id="coupon-input"
                   name="coupon"
                   onChange={this.handleCouponChange}
@@ -97,12 +98,25 @@ class CalculatorForm extends Component {
                   minLength="1"
                   maxLength="100"
                 />
-                <button id="coupon-add" onClick={this.addCoupon}>Add</button>
+                <button
+                  className="calculator-item coupon-add-btn"
+                  id="coupon-add"
+                  onClick={this.addCoupon}
+                >
+                  +
+                </button>
               </p>
             </section>
 
             <p>
-              <button id="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
+              <button
+                className="calculator-coupon-item input"
+                id="submit"
+                type="submit"
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </button>
             </p>
 
           </fieldset>
