@@ -4,6 +4,30 @@ import {
   sortByPrice
 } from './helpers';
 
+const deals =
+[
+  {
+    deal: 'test1',
+    discountPercent: 0.15,
+    conditions: '_coupon === "LUCKY ONE" || _pay > 1000'
+  },
+  {
+    deal: 'test2',
+    discountPercent: 0.25,
+    conditions: '_coupon === "4PAY3" && _people >= 4'
+  },
+  {
+    deal: 'test3',
+    discountPercent: 0.20,
+    conditions: '_coupon === "LUCKY TWO" && _people >= 2'
+  },
+  {
+    deal: 'test4',
+    discountPercent: 0.25,
+    conditions: '_pay > 6000' // these strings can be built by admin with the right UI
+  }
+]
+
 describe('helper functions', () => {
   describe('filterDeals()', () => {
 
@@ -53,12 +77,40 @@ describe('helper functions', () => {
   })
 
   describe('formatResult()', () => {
-    it('formats result properly', () => {
+    const totalBill = 8000;
 
+    it('formats result properly', () => {
+      const testCases = deals;
+      
+      const expectedResult = [
+        {name: 'test1', finalBill: totalBill * (1 - 0.15)},
+        {name: 'test2', finalBill: totalBill * (1 - 0.25)},
+        {name: 'test3', finalBill: totalBill * (1 - 0.20)},
+        {name: 'test4', finalBill: totalBill * (1 - 0.25)},
+      ]
+
+      expect(testCases
+        .map(deal => formatResult.call(null, deal, totalBill))
+      ).toEqual(expectedResult)
     })
 
-    it('handles corrupted data properly', () => {
+    it('handles unexpected cases', () => {
+      const testCases = [
+        {dealt: 'test0', discountPercent: 0.5}, // misspelt (data is keyed in by hand currently)
+        {deal: 'test1', conditions: ''}, // missing argument
+        {deal: 'test2', discountPercent: NaN}, // corrupted number
+        {deal: 'test3', discountPercent: 2} // more than 100%
+      ]
 
+      const expectedResult = [
+        {name: 'please check database, or create new deal', finalBill: totalBill / 2},
+        {name: 'test1', finalBill: totalBill},
+        {name: 'test2', finalBill: totalBill},
+        {name: 'test3', finalBill: totalBill}
+      ]
+
+      const results = testCases.map(deal => formatResult.call(null, deal, totalBill))
+      expect(results).toEqual(expectedResult);
     })
   })
 
@@ -72,27 +124,3 @@ describe('helper functions', () => {
     })
   })
 })
-
-const deals =
-[
-  {
-    deal: 'test1',
-    discountPercent: 15,
-    conditions: '_coupon === "LUCKY ONE" || _pay > 1000'
-  },
-  {
-    deal: 'test2',
-    discountPercent: 25,
-    conditions: '_coupon === "4PAY3" && _people >= 4'
-  },
-  {
-    deal: 'test3',
-    discountPercent: 20,
-    conditions: '_coupon === "LUCKY TWO" && _people >= 2'
-  },
-  {
-    deal: 'test4',
-    discountPercent: 25,
-    conditions: '_pay > 6000' // these strings can be built by admin with the right UI
-  }
-]
