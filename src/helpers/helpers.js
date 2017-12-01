@@ -7,7 +7,7 @@ export function filterDeals(deal, coupons, totalPeople, totalBill) {
   return coupons.length > 0
     ? coupons.filter(coupon => {
       return eval(
-          evalString.replace('_coupon', `"${coupon.replace(/["']/g, '')}"`)
+        evalString.replace('_coupon', `"${coupon.replace(/["']/g, '')}"`)
       )}).length > 0
     : eval(evalString.replace('_coupon', null))
 }

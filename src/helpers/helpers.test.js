@@ -81,7 +81,7 @@ describe('helper functions', () => {
 
     it('formats result properly', () => {
       const testCases = deals;
-      
+
       const expectedResult = [
         {name: 'test1', finalBill: totalBill * (1 - 0.15)},
         {name: 'test2', finalBill: totalBill * (1 - 0.25)},
@@ -116,11 +116,39 @@ describe('helper functions', () => {
 
   describe('sortByPrice()', () => {
     it('sorts properly', () => {
+      const testCases = [
+        {name: 'test1', finalBill: 800},
+        {name: 'test2', finalBill: 511},
+        {name: 'test3', finalBill: 300},
+        {name: 'test4', finalBill: 4000},
+      ]
 
+      const expectedResult = [
+        {name: 'test3', finalBill: 300},
+        {name: 'test2', finalBill: 511},
+        {name: 'test1', finalBill: 800},
+        {name: 'test4', finalBill: 4000},
+      ]
+
+      expect(testCases.sort(sortByPrice)).toEqual(expectedResult)
     })
 
-    it('handles unintended inputs properly', () => {
+    it('handles unlikely cases', () => {
+      const testCases = [
+        {name: 'test1', finalBill: 100},
+        {name: 'test2', finalBill: 100},
+        {name: 'test3', finalBill: 0},
+        {name: 'test4', finalBill: -50},
+      ]
 
+      const expectedResult = [
+        {name: 'test4', finalBill: -50},
+        {name: 'test3', finalBill: 0},
+        {name: 'test1', finalBill: 100},
+        {name: 'test2', finalBill: 100},
+      ]
+
+      expect(testCases.sort(sortByPrice)).toEqual(expectedResult)
     })
   })
 })
