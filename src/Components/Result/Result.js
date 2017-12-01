@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import * as actions from '../../actions/action'
+import shortid from 'shortid'
 
-class Result extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
+const Result = (props) => {
+  const items = props.results.map(result => {
     return (
-      this.props.results[0] && this.props.results[0].name
-        ? this.props.results[0].name + this.props.results[0].finalBill
-        : 'empty'
+      <div key={shortid.generate()}>
+        <p>{result.name}</p>
+        <p>{`${result.finalBill} Baht`}</p>
+      </div>
     )
-  }
+  })
+  return (
+    <div className="Result">
+      {items}
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
@@ -22,4 +24,4 @@ const mapStateToProps = (state) => {
 
 export const ResultTest = Result;
 
-export default connect(mapStateToProps, actions)(Result)
+export default connect(mapStateToProps)(Result)
