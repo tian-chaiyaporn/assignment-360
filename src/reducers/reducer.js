@@ -27,15 +27,22 @@ const initialState = {
       discountPercent: 25,
       conditions: '_pay > 6000' // these strings can be built by admin with the right UI
     }
-  ]
+  ],
+  results: []
 }
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case SUBMIT_CALCULATOR_FORM:
-      // normally, this logic would be handled server-side with thunk or saga
-      // I put it here because it's easier to access the store
-      return state
+      const { people, coupons } = action;
+      const totalBill = people * 459; // this can change if the bill is not fixed by the number of people
+      return Object.assign({}, state, {
+        // normally, this logic would be handled server-side with thunk or saga
+        results: state.deals
+          .filter(deal => filterDeals.call(null, deal, coupons, people, totalBill))
+          .map(deal => formatResult.call(null, deal, totalBill))
+          .sort(sortByPrice)
+      })
     default :
       return state
   }
