@@ -4,6 +4,7 @@ export function filterDeals(deal, coupons, totalPeople, totalBill) {
     .replace('_people', totalPeople > 0 ? totalPeople : null)
     .replace('_pay', totalBill > 0 ? totalBill : null)
 
+  // eval() should be okay here since we control the string, and it's not customer-facing
   return coupons.length > 0
     ? coupons.filter(coupon => {
       return eval(
@@ -18,7 +19,7 @@ export function formatResult(deal, totalBill) {
   return {
     name: deal.deal ? deal.deal : 'please check database, or create new deal',
     finalBill: discount && discount > 0 && discount <= 1
-      ? totalBill * (1 - discount)
+      ? Math.round(totalBill * (1 - discount))
       : totalBill
   }
 }
@@ -31,6 +32,8 @@ export function sortByPrice(dealA, dealB) {
     case dealA.finalBill < dealB.finalBill:
       return -1;
     case dealA.finalBill === dealB.finalBill:
+      return 0;
+    default:
       return 0;
   }
 }
