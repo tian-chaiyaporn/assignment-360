@@ -64,6 +64,7 @@ class CalculatorForm extends Component {
           <h1>Calculator Form</h1>
           <fieldset>
             <legend>Bill Calculator</legend>
+
             <p>
               <label htmlFor="people">
                 <span>Number of People: </span>
@@ -80,6 +81,7 @@ class CalculatorForm extends Component {
                 max="60"
               />
             </p>
+
             <section className="coupon-section">
               {appliedCoupons}
               <p className="coupon-form">
@@ -98,9 +100,11 @@ class CalculatorForm extends Component {
                 <button id="coupon-add" onClick={this.addCoupon}>Add</button>
               </p>
             </section>
+
             <p>
               <button id="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
             </p>
+
           </fieldset>
         </form>
       </div>

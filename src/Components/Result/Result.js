@@ -14,6 +14,7 @@ const Result = (props) => {
       />
     )
   })
+
   return (
     <div className="Result">
       {items}
