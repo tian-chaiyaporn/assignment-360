@@ -27,7 +27,7 @@ class CalculatorForm extends Component {
     this.setState((prevState) => {
       const newCoupon = prevState.couponInput.toUpperCase().trim().replace(/\s\s+/g, ' ')
       return (
-        !prevState.coupons.includes(newCoupon) && {
+        !prevState.coupons.includes(newCoupon) && newCoupon !== '' && {
           couponInput: '',
           coupons: [...prevState.coupons, newCoupon]
         }
