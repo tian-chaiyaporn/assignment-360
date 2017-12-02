@@ -54,10 +54,10 @@ class CalculatorForm extends Component {
         <p key={shortid.generate()} className="calculator-item coupon">
           <span id={coupon} className="coupon-item">{coupon}</span>
           <button
-            className="coupon-btn"
+            className="coupon-delete-button"
             onClick={this.deleteCoupon.bind(this, coupon)}
           >
-            x
+            -
           </button>
         </p>
       )
@@ -105,7 +105,7 @@ class CalculatorForm extends Component {
                   maxLength="100"
                 />
                 <button
-                  className="calculator-item coupon-btn"
+                  className="coupon-add-button"
                   id="coupon-add"
                   onClick={this.addCoupon}
                 >
@@ -116,7 +116,7 @@ class CalculatorForm extends Component {
 
             <p>
               <button
-                className="coupon-submit coupon-btn"
+                className="coupon-submit-button"
                 id="submit"
                 type="submit"
                 onClick={this.handleSubmit}

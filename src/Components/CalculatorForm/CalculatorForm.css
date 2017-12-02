@@ -13,13 +13,10 @@
   margin: 0;
   border: none; }
 
-.calculator-people {
+.calculator-people, .calculator-coupon-add {
   display: flex; }
 
-.calculator-coupon-add {
-  display: flex; }
-
-.calculator-item {
+.calculator-item, .coupon-add-button, .coupon-delete-button {
   display: flex;
   text-align: center;
   font-size: 1.2em;
@@ -28,38 +25,62 @@
   background-color: white;
   border: none; }
 
-.people-label {
-  flex: 4;
+@media (max-width: 768px) {
+  .calculator-item, .coupon-add-button, .coupon-delete-button {
+    font-size: 0.8em;
+    height: 40px; } }
+
+/******* Form Label *********/
+.form-label, .people-label, .coupon-label {
   font-weight: bold;
   padding: 12px;
   background-color: #E1BEE7; }
 
-.people-input {
-  flex: 1;
-  text-align: center; }
+.people-label {
+  flex: 4; }
 
 .coupon-label {
-  flex: 2;
-  font-weight: bold;
-  padding: 12px;
-  background-color: #E1BEE7; }
+  flex: 2; }
 
-.coupon-input {
-  flex: 5;
+/******* Form Input *********/
+.form-input, .people-input, .coupon-input {
   text-align: center; }
 
-.coupon-btn {
-  flex: 1;
+.people-input {
+  flex: 1; }
+
+.coupon-input {
+  flex: 5; }
+
+/******* Form Button *********/
+.coupon-btn, .coupon-submit-button, .coupon-add-button, .coupon-delete-button {
   display: inline-block;
   text-align: center;
+  cursor: pointer;
   font-size: 1.8em;
   color: white;
   background-color: #1E88E5; }
 
+.coupon-submit-button {
+  font-size: 1.2em;
+  padding: 15px; }
+
+.coupon-add-button {
+  flex: 1;
+  font-weight: bold; }
+
+.coupon-delete-button {
+  font-weight: bold;
+  flex: 1;
+  background-color: #AD1457; }
+
+@media (max-width: 768px) {
+  .coupon-btn, .coupon-submit-button, .coupon-add-button, .coupon-delete-button {
+    font-size: 1.2em; }
+  .coupon-submit-button {
+    font-size: 1em; } }
+
+/******* Coupon Items *********/
 .coupon-item {
   flex: 7;
   padding: 12px; }
-
-.coupon-submit {
-  font-size: 1.2em;
-  padding: 15px; }

@@ -1,3 +1,5 @@
+@import 'styles/variables.scss';
+
 .CalculatorForm {
   display: flex;
   width: 100%;
@@ -16,63 +18,102 @@
   border: none;
 }
 
-.calculator-people {
-  display: flex;
-}
-
-.calculator-coupon-add {
+.calculator-people, .calculator-coupon-add {
   display: flex;
 }
 
 .calculator-item {
   display: flex;
   text-align: center;
-  font-size: 1.2em;
+  font-size: $font-size-main;
   height: 45px;
   width: 100%;
-  background-color: white;
+  background-color: $font-color-light;
   border: none;
 }
 
-.people-label {
-  flex: 4;
-  font-weight: bold;
-  padding: 12px;
-  background-color: #E1BEE7;
+@include mobile {
+  .calculator-item {
+    font-size: $font-size-small;
+    height: 40px;
+  }
 }
 
-.people-input {
-  flex: 1;
-  text-align: center;
+/******* Form Label *********/
+.form-label {
+  font-weight: bold;
+  padding: 12px;
+  background-color: $primary-light-color;
+}
+
+.people-label {
+  @extend .form-label;
+  flex: 4;
 }
 
 .coupon-label {
+  @extend .form-label;
   flex: 2;
-  font-weight: bold;
-  padding: 12px;
-  background-color: #E1BEE7;
+}
+
+/******* Form Input *********/
+.form-input {
+  text-align: center;
+}
+
+.people-input {
+  @extend .form-input;
+  flex: 1;
 }
 
 .coupon-input {
+  @extend .form-input;
   flex: 5;
-  text-align: center;
 }
 
+/******* Form Button *********/
 .coupon-btn {
-  flex: 1;
   display: inline-block;
   text-align: center;
-  font-size: 1.8em;
-  color: white;
-  background-color: #1E88E5;
+  cursor: pointer;
+  font-size: $font-size-big;
+  color: $font-color-light;
+  background-color: $primary-dark-color;
 }
 
+.coupon-submit-button {
+  @extend .coupon-btn;
+  font-size: $font-size-main;
+  padding: 15px;
+}
+
+.coupon-add-button {
+  @extend .coupon-btn;
+  @extend .calculator-item;
+  flex: 1;
+  font-weight: bold;
+}
+
+.coupon-delete-button {
+  @extend .coupon-btn;
+  @extend .calculator-item;
+  font-weight: bold;
+  flex: 1;
+  background-color: $highlight-color;
+}
+
+@include mobile {
+  .coupon-btn {
+    font-size: $font-size-main;
+  }
+
+  .coupon-submit-button {
+    font-size: $font-size-medium;
+  }
+}
+
+/******* Coupon Items *********/
 .coupon-item {
   flex: 7;
   padding: 12px;
-}
-
-.coupon-submit {
-  font-size: 1.2em;
-  padding: 15px;
 }
