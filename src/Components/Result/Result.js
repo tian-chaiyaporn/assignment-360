@@ -1,4 +1,5 @@
 import React from 'react';
+import './Result.css';
 import { connect } from 'react-redux'
 import shortid from 'shortid'
 import ResultItem from './ResultItem'
@@ -17,6 +18,7 @@ const Result = (props) => {
 
   return (
     <div className="Result">
+      <h1>Result:</h1>
       {items}
     </div>
   )

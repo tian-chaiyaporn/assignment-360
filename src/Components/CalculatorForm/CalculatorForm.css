@@ -4,6 +4,10 @@
   padding: 10px;
 }
 
+.calculator-form {
+  width: 100%;
+}
+
 .calculator-fieldset {
   display: flex;
   width: inherit;
@@ -32,6 +36,7 @@
 
 .people-label {
   flex: 4;
+  font-weight: bold;
   padding: 12px;
   background-color: #E1BEE7;
 }
@@ -42,22 +47,32 @@
 }
 
 .coupon-label {
-  flex: 1;
-  display: inline-block;
+  flex: 2;
+  font-weight: bold;
   padding: 12px;
   background-color: #E1BEE7;
 }
 
 .coupon-input {
-  flex: 4;
+  flex: 5;
   text-align: center;
 }
 
-.coupon-add-btn {
+.coupon-btn {
   flex: 1;
   display: inline-block;
   text-align: center;
   font-size: 1.8em;
   color: white;
   background-color: #1E88E5;
+}
+
+.coupon-item {
+  flex: 7;
+  padding: 12px;
+}
+
+.coupon-submit {
+  font-size: 1.2em;
+  padding: 15px;
 }
