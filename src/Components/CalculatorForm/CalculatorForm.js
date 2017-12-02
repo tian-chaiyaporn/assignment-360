@@ -100,6 +100,7 @@ class CalculatorForm extends Component {
                   name="coupon"
                   onChange={this.handleCouponChange}
                   value={this.state.couponInput}
+                  placeholder="TYPE HERE"
                   minLength="1"
                   maxLength="100"
                 />
