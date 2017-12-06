@@ -8,6 +8,7 @@ This project was started with create-react-app, and the rest was developed by my
 To get started:
 
 * Please Clone and Install, then start the app:
+    - `npm install`
     - `yarn start`
     - or `npm start`
 * To start developing, start it up, and use the following scripts for tests and watching scss:
